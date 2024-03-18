@@ -17,7 +17,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
   const onClickOrder = async () => {
     try {
       setIsLoading(true);
-      const { data } = await axios.post('/orders', {
+      const { data } = await axios.post('https://65f430f2f54db27bc020bfe1.mockapi.io/orders', {
         items: cartItems,
       });
       setOrderId(data.id);
@@ -26,7 +26,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
 
       for (let i = 0; i < cartItems.length; i++) {
         const item = cartItems[i];
-        await axios.delete('/cart/' + item.id);
+        await axios.delete('https://65e99effc9bf92ae3d39a4ec.mockapi.io/cart/' + item.id);
         await delay(1000);
       }
     } catch (error) {
